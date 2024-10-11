@@ -167,39 +167,43 @@ export const FormField = Node.create({
         ({ chain }) => {
           return chain().updateAttributes(this.name, attrs).run();
         },
-      deleteFormField:
-        (id) =>
-        ({ chain, state }) => {
+        deleteFormField: (id: string) => ({ chain, state }) => {
           const { tr } = state;
+          let deleted = false; // Flag to track if deletion occurred
+        
           state.doc.descendants((node, pos) => {
             if (node.type.name === this.name && node.attrs.id === id) {
               tr.delete(pos, pos + node.nodeSize);
-              return false;
+              deleted = true; // Set the flag to true because deletion happened
+              return false; // Stop iterating once the node is deleted
             }
           });
-          return chain().step(tr).run();
+        
+          return chain().command(() => {
+            return deleted; // Return true if deleted, false otherwise
+          }).run();
         },
-      moveFormField:
-        (id, position) =>
-        ({ chain, state }) => {
-          const { tr } = state;
-          let sourcePos: number | null = null;
-
-          state.doc.descendants((node, pos) => {
-            if (node.type.name === this.name && node.attrs.id === id) {
-              sourcePos = pos;
-              return false;
-            }
-          });
-
-          if (sourcePos !== null) {
-            const targetPos = state.doc.resolve(position);
-            tr.lift(tr.mapping.map(sourcePos), 1);
-            tr.insert(tr.mapping.map(targetPos.pos), state.doc.nodeAt(sourcePos)!);
-          }
-
-          return chain().step(tr).run();
-        },
+        // moveFormField: (direction: 'up' | 'down') => ({ pos, editor, chain }) => {
+        //   const $pos = editor.state.doc.resolve(pos);
+        //   const node = $pos.nodeAfter;
+        //   if (!node) {
+        //     return false;
+        //   }
+  
+        //   const newPos = direction === 'up' ? pos - 1 : pos + node.nodeSize;
+  
+        //   // Check if the new position is valid
+        //   if (newPos < 0 || newPos > editor.state.doc.content.size) {
+        //     return false;
+        //   }
+  
+        //   return chain().command(
+        //       ({ tr }) => {
+        //           // ... your existing logic to modify the transaction (tr) ...
+        //           return true; // Indicate that the command was successful
+        //       }
+        //   ).run();
+        // },
     };
   },
 

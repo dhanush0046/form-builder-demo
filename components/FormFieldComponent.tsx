@@ -533,9 +533,9 @@
 import React, { useState, useCallback, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Trash2, GripVertical } from "lucide-react";
-import { NodeViewWrapper } from "@tiptap/react";
+import { NodeViewWrapper,NodeViewProps } from "@tiptap/react";
 
-interface FormFieldComponentProps {
+interface FormFieldComponentProps{
   node: {
     attrs: {
       id: string;
@@ -551,7 +551,7 @@ interface FormFieldComponentProps {
   deleteNode: () => void;
 }
 
-const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
+const FormFieldComponent: React.FC<NodeViewProps & Omit<FormFieldComponentProps, keyof NodeViewProps>> = ({
   node,
   updateAttributes,
   deleteNode,
@@ -633,7 +633,7 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
       case "multipleChoice":
         return (
           <div className="space-y-2">
-            {options?.map((option, index) => (
+            {options?.map((option:string, index:number) => (
               <div key={index} className="flex items-center">
                 <input
                   type="radio"
@@ -652,7 +652,7 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
       case "checkbox":
         return (
           <div className="space-y-2">
-            {options?.map((option, index) => (
+            {options?.map((option:string, index:number) => (
               <div key={index} className="flex items-center">
                 <input
                   type="checkbox"
@@ -682,7 +682,7 @@ const FormFieldComponent: React.FC<FormFieldComponentProps> = ({
             className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">{placeholder}</option>
-            {options?.map((option, index) => (
+            {options?.map((option:string, index:number) => (
               <option key={index} value={option}>
                 {option}
               </option>

@@ -175,6 +175,7 @@ import FormFieldComponent from "./FormFieldComponent";
 import { validateForm } from "./FormValidation";
 import "@/styles/global.css";
 import { toast } from "react-hot-toast";
+import { Node } from 'prosemirror-model'; // Assuming you're using ProseMirror
 
 interface FormFieldType {
   id: string;

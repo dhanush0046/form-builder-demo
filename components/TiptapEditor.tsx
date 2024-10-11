@@ -372,7 +372,7 @@ const TiptapEditor: React.FC = () => {
         <h1 className="text-3xl font-bold mb-6">{formTitle}</h1>
         {formFields.map((field) => (
           <div key={field.id} className="mb-4">
-            <FormFieldComponent
+            {/* <FormFieldComponent
               node={{
                 attrs: {
                   ...field,
@@ -383,7 +383,7 @@ const TiptapEditor: React.FC = () => {
                 handleFieldChange(field.id, attrs.fieldContent);
               }}
               deleteNode={() => {}}
-            />
+            /> */}
           </div>
         ))}
       </div>

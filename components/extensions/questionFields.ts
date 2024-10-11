@@ -1,6 +1,6 @@
 import React from 'react';  
 import { 
-  Heading1, Heading2, List, ListOrdered, Type, AlignLeft, CheckSquare, ToggleLeft, 
+  List, ListOrdered, Type, AlignLeft, CheckSquare, ToggleLeft, 
   ChevronDown, Calendar, Clock, Upload, Star, BarChart, Mail, Phone, LinkIcon, Grid, PenTool, BarChart2
 } from 'lucide-react';
 import { CommandItem } from './TypeSuggestion';

@@ -170,7 +170,7 @@ import { FormField } from "./extensions/FormField";
 import Placeholder from "@tiptap/extension-placeholder";
 import { Button } from "@/components/ui/button";
 import { Bold, Italic, List, ListOrdered, Eye, EyeOff, Save } from "lucide-react";
-import { DragDropContext, Droppable, Draggable, DropResult } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import FormFieldComponent from "./FormFieldComponent";
 import { validateForm } from "./FormValidation";
 import "@/styles/global.css";
@@ -271,7 +271,7 @@ const TiptapEditor: React.FC = () => {
     // Clean up the event listener when the component unmounts
     return () => {
       if (editor) {
-        editor.view.dom.removeEventListener('mousedown', (event) => {
+        editor.view.dom.removeEventListener('mousedown', () => {
           // ... (same event handler logic as above)
         });
       }
@@ -355,15 +355,15 @@ const TiptapEditor: React.FC = () => {
     editor?.commands.moveFormField(result.draggableId, result.destination.index);
   }, [formFields, editor]);
 
-  const deleteField = useCallback((fieldId: string) => {
-    setFormFields((prev) => prev.filter((field) => field.id !== fieldId));
-    setFormData((prev) => {
-      const { [fieldId]: _, ...rest } = prev;
-      return rest;
-    });
+  // const deleteField = useCallback((fieldId: string) => {
+  //   setFormFields((prev) => prev.filter((field) => field.id !== fieldId));
+  //   setFormData((prev) => {
+  //     const { [fieldId]: _, ...rest } = prev;
+  //     return rest;
+  //   });
     
-    editor?.chain().focus().deleteFormField(fieldId).run();
-  }, [editor]);
+  //   editor?.chain().focus().deleteFormField(fieldId).run();
+  // }, [editor]);
 
   const renderPreview = () => {
     return (

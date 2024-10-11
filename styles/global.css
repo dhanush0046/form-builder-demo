@@ -1,0 +1,146 @@
+/* .tiptapEditor p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: #adb5bd;
+  float: left;
+  pointer-events: none;
+  height: 0;
+}
+
+.tiptapEditor .is-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+} */
+
+
+.content-editable-block {
+  /* width: 100%; */
+  outline: none;
+  color: rgb(55, 53, 47);
+  caret-color: rgb(55, 53, 47);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding: 8px;
+  min-height: 1em;
+  /* border: 1px solid #e2e8f0;
+  border-radius: 0.25rem; */
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* .content-editable-block:focus {
+  border-color: #4299e1;
+} */
+
+/* .content-editable-block:empty::before {
+  content: attr(data-placeholder);
+  color: #97999c;
+  pointer-events: none;
+} */
+
+.label-input {
+  /* border: 1px solid #e2e8f0;
+  padding: 8px; */
+}
+
+.label-input:empty::before {
+  content: attr(data-placeholder);
+  color: #8d9094;
+}
+
+.field-input {
+  margin-top: 4px;
+  border: 1px solid #46484b;
+  border-radius: 0.40rem;
+  background-color: transparent;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+.longText {
+  height: 100px;
+}
+
+.form-field {
+  position: relative;
+  /* padding: 16px; */
+  border: none;
+  cursor: text;
+  /* background-color: #f7fafc;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s ease-in-out; */
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* .ProseMirror .is-empty::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}  */
+
+.content-editable-block:empty:before {
+  content: attr(data-placeholder);
+  color: #adb5bd;
+}
+
+.my-custom-paragraph {
+  margin: 0.5em 0;
+}
+
+[data-type="form-field"] {
+  margin-bottom: 0;
+  padding: 0;
+  line-height: 1.2; /* Optional: Adjust for tighter spacing */
+}
+
+[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: #9ca3af; 
+
+}
+
+
+[contenteditable]:focus {
+  outline: none;
+}
+
+.longText {
+  min-height: 100px;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(5px); }
+  50% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.hBIKJt {
+  outline: none;
+  color: rgb(55, 53, 47);
+  caret-color: rgb(55, 53, 47);
+  line-height: 1.125;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.hBIKJt::placeholder {
+  color: rgba(55, 53, 47, 0.5); /* Example color for placeholder */
+  opacity: 1; /* Ensures the placeholder is fully opaque */
+}
